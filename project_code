@@ -12,12 +12,7 @@ library(ROCR)
 library(pROC)
 library(olsrr)
 library(miscTools)
-library(pROC)
 library(e1071)
-library(RColorBrewer)
-
-
-library(leaps)
 
 #Read data
 data <- read.csv(file="C:/Users/Shivam Pandit/Desktop/Data Science/Project/OnlineNewsPopularity.csv", header=TRUE, sep=",")
@@ -220,10 +215,6 @@ plot(cormat)
 library(corrplot)
 corrplot(cormat, type = "upper", order = "hclust", 
          tl.col = "black", tl.srt = 45)
-
-
-
-
 
 
 #########################################
