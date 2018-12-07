@@ -14,9 +14,17 @@ library(olsrr)
 library(e1071)
 
 #Read data
-data <- read.csv(file="C:/Users/Shivam Pandit/Desktop/Data Science/Project/OnlineNewsPopularity.csv", header=TRUE, sep=",")
-dim(data)
-names(data)
+#Downloading dataset and importing
+library(data.table)
+temp <- tempfile()
+download.file('http://archive.ics.uci.edu/ml/machine-learning-databases/00332/OnlineNewsPopularity.zip', temp)
+data  <- data.table(read.table(unzip(zipfile = temp, 
+                                     files = 'OnlineNewsPopularity/OnlineNewsPopularity.csv', 
+                                     junkpaths = TRUE), header = TRUE, sep = ',', stringsAsFactors = FALSE))
+
+#Using Local Dataset location
+data <- read.csv(file="C:/Users/Shivam Pandit/Desktop/Data Science/Individual Project/bank-additional-full.csv", header=TRUE, sep=",")
+
 
 #summary before cleaning
 summary(data)
@@ -29,7 +37,6 @@ sum(is.na(data))
 
 #Removing outlier
 data=data[!data$n_non_stop_words==1042,]
-#data=data[!data$n_tokens_content>=1000,]
 summary(data)
 
 #Removing non predictive variables 
